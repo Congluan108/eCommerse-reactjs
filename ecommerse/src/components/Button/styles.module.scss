@@ -1,0 +1,48 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variables.module.scss';
+
+.btn {
+    @include btn(176px, 50px, 5px, $primary-color);
+
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    color: $white_color;
+
+    position: relative;
+    overflow: hidden;
+
+    &:hover{
+        background-color: transparent;
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        transition: background-color 200ms;
+    }
+    .btn_title{
+        display: inline-block;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        position: relative;
+        
+    }
+    &:hover .btn_title{
+        animation: moveUpAndFadeTitle 0.3s ease-in-out;
+    }
+}
+@keyframes moveUpAndFadeTitle {
+    0% {
+        transform: translateY(0);  // Nội dung ban đầu ở vị trí gốc
+        opacity: 1; // Nội dung ban đầu hiện ra đầy đủ
+    }
+    50% {
+        transform: translateY(-100%); // Nội dung di chuyển lên và biến mất
+        opacity: 0; // Biến mất dần
+    }
+    51% {
+        transform: translateY(100%); // Nội dung xuất hiện lại từ dưới
+        opacity: 0; // Vẫn ẩn ở trạng thái ban đầu của giai đoạn 2
+    }
+    100% {
+        transform: translateY(0); // Trở về vị trí ban đầu từ dưới lên
+        opacity: 1; // Hiện ra lại đầy đủ
+    }
+}
